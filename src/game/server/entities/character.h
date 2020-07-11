@@ -45,7 +45,7 @@ public:
 	void OnPredictedInput(CNetObj_PlayerInput *pNewInput);
 	void OnDirectInput(CNetObj_PlayerInput *pNewInput);
 	void ResetInput();
-	void FireWeapon();
+	void FireWeapon(bool force = false);
 
 	void Die(int Killer, int Weapon);
 	bool TakeDamage(vec2 Force, int Dmg, int From, int Weapon);
@@ -113,6 +113,9 @@ private:
 
 	int m_Health;
 	int m_Armor;
+	
+	int m_HealthRegenTick;
+	int m_LastStunnedIndicator;
 
 	// ninja
 	struct
@@ -130,6 +133,9 @@ private:
 	int m_ReckoningTick; // tick that we are performing dead reckoning From
 	CCharacterCore m_SendCore; // core that we should send
 	CCharacterCore m_ReckoningCore; // the dead reckoning core
+	
+	friend class CBall;
+	friend class CGameControllerBALL;
 
 };
 
