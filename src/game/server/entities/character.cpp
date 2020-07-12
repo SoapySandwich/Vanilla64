@@ -457,7 +457,7 @@ void CCharacter::FireWeapon(bool force)
 
 		case WEAPON_RIFLE:
 		{
-			if (g_Config.m_SvBallType == WEAPON_SHOTGUN)
+			if (g_Config.m_SvBallType == WEAPON_RIFLE)
 			{
 				CBall *pProj = new CBall(GameWorld(),
 					m_pPlayer->GetCID(),
