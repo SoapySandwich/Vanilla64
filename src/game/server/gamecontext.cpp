@@ -777,7 +777,7 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
 					return;
 				}
 				if (!Server()->ReverseTranslate(KickID, ClientID))
-                    return;
+                    			return;
 
 				if(Server()->IsAuthed(KickID))
 				{
@@ -785,6 +785,12 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
 					char aBufKick[128];
 					str_format(aBufKick, sizeof(aBufKick), "'%s' called for vote to kick you", Server()->ClientName(ClientID));
 					SendChatTarget(KickID, aBufKick);
+					return;
+				}
+				
+				if (m_apPlayers[KickID]->GetProtectionTick() > Server()->Tick())
+				{
+					SendChatTarget(ClientID, "You can't kickvote players who just joined.");
 					return;
 				}
 
@@ -818,8 +824,13 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
 					SendChatTarget(ClientID, "You can't move yourself");
 					return;
 				}
+				if (m_apPlayers[SpectateID]->GetProtectionTick() > Server()->Tick())
+				{
+					SendChatTarget(ClientID, "You can't vote to move players who just joined to spectators.");
+					return;
+				}
 				if (!Server()->ReverseTranslate(SpectateID, ClientID))
-                    return;
+                    			return;
 
 				str_format(aChatmsg, sizeof(aChatmsg), "'%s' called for vote to move '%s' to spectators (%s)", Server()->ClientName(ClientID), Server()->ClientName(SpectateID), pReason);
 				str_format(aDesc, sizeof(aDesc), "move '%s' to spectators", Server()->ClientName(SpectateID));
