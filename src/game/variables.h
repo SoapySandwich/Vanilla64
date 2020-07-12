@@ -82,6 +82,7 @@ MACRO_CONFIG_INT(SvVoteSpectate, sv_vote_spectate, 1, 0, 1, CFGFLAG_SERVER, "All
 MACRO_CONFIG_INT(SvVoteSpectateRejoindelay, sv_vote_spectate_rejoindelay, 3, 0, 1000, CFGFLAG_SERVER, "How many minutes to wait before a player can rejoin after being moved to spectators by vote")
 MACRO_CONFIG_INT(SvVoteKick, sv_vote_kick, 1, 0, 1, CFGFLAG_SERVER, "Allow voting to kick players")
 MACRO_CONFIG_INT(SvVoteKickMin, sv_vote_kick_min, 0, 0, MAX_CLIENTS, CFGFLAG_SERVER, "Minimum number of players required to start a kick vote")
+MACRO_CONFIG_INT(SvVoteKickProtection, sv_vote_kick_protection, 90, 0, 10000, CFGFLAG_SERVER, "Kick protection for joined players in seconds")
 MACRO_CONFIG_INT(SvVoteKickBantime, sv_vote_kick_bantime, 5, 0, 1440, CFGFLAG_SERVER, "The time to ban a player if kicked by vote. 0 makes it just use kick")
 
 MACRO_CONFIG_INT(SvMultiBall, sv_ball_multi, 0, 0, 1, CFGFLAG_SERVER, "Multiball support")
@@ -93,7 +94,7 @@ MACRO_CONFIG_INT(SvHealthStunnedTicks, sv_health_stunned, 200, 0, 10000, CFGFLAG
 MACRO_CONFIG_INT(SvBaseKeep, sv_ball_base_keep, 150, 0, 1000000, CFGFLAG_SERVER, "# Ticks you are guaranteed to keep the ball")
 MACRO_CONFIG_INT(SvArmorKeep, sv_ball_armor_keep, 25, 0, 1000000, CFGFLAG_SERVER, "# Ticks per armor you can keep the ball additional to the base time")
 MACRO_CONFIG_INT(SvBallLifetime, sv_ball_lifetime, 90, 0, 1000000, CFGFLAG_SERVER, "Ball lifetime in seconds")
-MACRO_CONFIG_INT(SvPhysicalStartVel, sv_physical_start_vel, 100, 0, 100, CFGFLAG_SERVER, "How much influence does the tee velocity have to the projectile velocity. 100 = physically correct. 0 = no influence, default of vanilla teeworlds.")
+MACRO_CONFIG_INT(SvPhysicalStartVel, sv_physical_start_vel, 0, 0, 100, CFGFLAG_SERVER, "How much influence does the tee velocity have to the projectile velocity. 100 = physically correct. 0 = no influence, default of vanilla teeworlds.")
 
 // debug
 #ifdef CONF_DEBUG // this one can crash the server if not used correctly
