@@ -79,6 +79,7 @@ bool CCharacter::Spawn(CPlayer *pPlayer, vec2 Pos)
 	m_Alive = true;
 
 	GameServer()->m_pController->OnCharacterSpawn(this);
+	SetWeapon(WEAPON_HAMMER);
 
 	return true;
 }
