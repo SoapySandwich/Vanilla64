@@ -23,6 +23,8 @@ public:
 	void SetTeam(int Team, bool DoChatMsg=true);
 	int GetTeam() const { return m_Team; };
 	int GetCID() const { return m_ClientID; };
+	
+	int GetProtectionTick() const { return m_ProtectionTick; }
 
 	void Tick();
 	void PostTick();
@@ -108,6 +110,7 @@ private:
 	bool m_Spawning;
 	int m_ClientID;
 	int m_Team;
+	int m_ProtectionTick;
 };
 
 #endif
